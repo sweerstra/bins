@@ -10,7 +10,7 @@ export default function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      // checkAuth().catch(logout);
+      checkAuth().catch(logout);
     }
   }, [isAuthenticated]);
 

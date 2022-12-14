@@ -1,7 +1,7 @@
 export const createMockBin = (id) => ({
   id,
   name: `Bin ${id}`,
-  code: 'console.log(\'mock\')'
+  code: `console.log('${id}')`
 });
 
 const okResponse = { n: 1, ok: 1 };

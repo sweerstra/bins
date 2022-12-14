@@ -3,7 +3,7 @@ import Editor from '../components/Editor/Editor';
 import { useKeyDown } from '../hooks/event';
 import { useSelectedBin } from '../context/SelectedBin';
 
-function EditorContainer() {
+function EditorContainer({ onRun }) {
   const { selectedBin, setSelectedBin } = useSelectedBin();
 
   useKeyDown(
@@ -12,20 +12,15 @@ function EditorContainer() {
     () => runCode()
   );
 
-  function onCodeChange(code) {
-    setSelectedBin({ ...selectedBin, code });
+  function runCode() {
+    const { code } = selectedBin;
+    if (code.trim()) {
+      onRun(code);
+    }
   }
 
-  function runCode() {
-    if (!selectedBin.code.trim()) {
-      return;
-    }
-
-    try {
-      eval(selectedBin.code);
-    } catch (e) {
-      throw new Error(e.message);
-    }
+  function onCodeChange(code) {
+    setSelectedBin({ ...selectedBin, code });
   }
 
   return (

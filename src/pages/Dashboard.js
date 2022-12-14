@@ -25,12 +25,20 @@ const Dashboard = React.memo(() => {
   const toggleLibraries = () => showLibraries(!areLibrariesVisible);
   const toggleSettings = () => showSettings(!areSettingsVisible);
 
+  function runCode(code) {
+    try {
+      eval(code);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
   return (
     <SettingsProvider>
       <SelectedBinProvider>
         <Wrapper>
           <Navbar onViewLibraries={toggleLibraries} onViewSettings={toggleSettings} />
-          <EditorContainer />
+          <EditorContainer onRun={runCode}/>
           <BinsContainer />
           <Console />
           <LibrariesContainer isVisible={areLibrariesVisible} onHide={toggleLibraries} />

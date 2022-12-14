@@ -4,15 +4,12 @@ import { render } from '@testing-library/react'
 import { Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './ui/theme';
-import { AuthProvider } from './context/Auth';
 import { createMemoryHistory } from 'history';
 
 const WithProviders = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        {children}
-      </AuthProvider>
+      {children}
     </ThemeProvider>
   )
 };

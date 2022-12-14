@@ -1,6 +1,6 @@
 import React from 'react';
 import Editor from './Editor';
-import { fireEvent, render, wait } from '../../test-utils';
+import { render } from '../../test-utils';
 
 const code = 'console.log(\'test\')';
 const onCodeChange = jest.fn();

@@ -53,10 +53,7 @@ describe('<Libraries />', () => {
     const libraries = [{ url: TEST_LIBRARY_URL, name: TEST_LIBRARY_NAME }];
     const { getAllByText, queryByTestId } = setup(libraries);
     expect(queryByTestId('libraries-empty-message')).not.toBeInTheDocument();
-
-    const firstRemoveButton = getAllByText('×')[0];
-    fireEvent.click(firstRemoveButton);
-
+    fireEvent.click(getAllByText('×')[0]);
     expect(onRemove).toHaveBeenCalledWith(libraries[0]);
   });
 });
